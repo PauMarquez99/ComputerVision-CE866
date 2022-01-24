@@ -9,7 +9,7 @@ import cv2, sys, numpy
 
 # Configuration.
 #Reduce maxgrey from 256 to 64 in grey experiment
-MAXGREY = 64
+MAXGREY = 256
 
 #-------------------------------------------------------------------------------
 # Routines.
@@ -30,7 +30,7 @@ def statistics (im, indent="  "):
     text += "%sS.D.:    %.2f\n" % (indent, sd)
     return text
 
-def histogram (im, fn):
+def histogram (im, fn, channel):
     "Determine the histogram of an image -- simple version."
     global MAXGREY
 
@@ -51,6 +51,13 @@ def histogram (im, fn):
     min = im.min()
     max = im.max()
     # Work through the image, accumulating the histogram.
+    if channel == "c1":
+    	c = 1
+    elif channel == "c2":
+    	c = 2
+    elif channel == "c3":
+    	c = 3
+    
     for y in range (0, ny):
         for x in range (0, nx):
             for c in range (0, nc):
@@ -81,7 +88,9 @@ for fn in sys.argv[1:]:
     print (statistics (im))
 
     # Calculate and output the histogram data.
-    histogram (im, fn + ".dat")
+    histogram (im, fn, "c1")
+    histogram (im, fn, "c2")
+    histogram (im, fn, "c3")
 
 #-------------------------------------------------------------------------------
 # End of summarize.
