@@ -66,6 +66,8 @@ def histogram (im, fn, channel):
                 v = int((MAXGREY-1) * ((int (im[y,x,c])-min)/(max-min)))
                 hist[v] += 1
 
+
+    fn = fn + '_' + channel + '.dat'
     # Output the histogram values to a file.
     with open (fn, "w") as f:
         for i in range (0, MAXGREY):

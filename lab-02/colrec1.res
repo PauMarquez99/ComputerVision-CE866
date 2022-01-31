@@ -1,4 +1,4 @@
-transcript_begin fruit 0.00 label 2020-10-13 08:57:45.601399
+transcript_begin fruit 0.00 label 2022-01-31 13:29:17.171667
 result ass1-001 gapple S gapple
 result ass1-002 gapple S gapple
 result ass1-003 gapple S gapple
@@ -79,4 +79,4 @@ result ass1-077 tomato S chili
 result ass1-078 tomato S tomato
 result ass1-079 tomato S tomato
 result ass1-080 tomato S tomato
-transcript_end 1884.0579240322113
+transcript_end 2103.034972190857
