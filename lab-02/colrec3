@@ -23,40 +23,38 @@ def compare (h1, h2):
     return abs (v1 / v2)
 
 def histogram (im):
-    """Determine the histogram of an image -- simple version copied from
-    lab-01's summarize program."""
-    MAXGREY = 256
+	"""Determine the histogram of an image -- simple version copied from
+	lab-01's summarize program."""
+	MAXGREY = 256
 
     # We shall fill the array hist with the histogram.
-    hist = numpy.zeros (MAXGREY)
+	hist = numpy.zeros (MAXGREY)
+	cHistogram = []
 
     # Get the image sizes.
-    sizes = im.shape
-    if len (sizes) == 2:
-        # it's monochrome
-        ny = sizes (0)
-        nx = sizes (1)
-        nc = 1
-    else:
-        # it has several channels
-        ny, nx, nc = sizes
+	sizes = im.shape
+	if len (sizes) == 2:
+		# it's monochrome
+		ny = sizes (0)
+		nx = sizes (1)
+		nc = 1
+	else:
+		# it has several channels
+		ny, nx, nc = sizes
 
-    # Work through the image, accumulating the histogram.
-    if channel == "c1":
-    	c = 1
-    elif channel == "c2":
-    	c = 2
-    elif channel == "c3":
-    	c = 3
-    
-    for y in range (0, ny):
-        for x in range (0, nx):
-            for c in range (0, nc):
-                v = int (im[y,x,c])
-                hist[v] += 1
+	if nc != 0:
+        # Work through the image, accumulating the histogram.
+        # Loop through channels
+		for c in range (0, nc):
+			for y in range (0, ny):
+				for x in range (0, nx):
+					v = int (im[y,x,c])
+					hist[v] += 1
+			cHistogram = numpy.append(cHistogram, hist)
+			hist = numpy.zeros(MAXGREY)
 
     # Return the histogram we have computed.
-    return hist
+	return cHistogram
 
 #------------------------------------------------------------------------------
 # Say hello and initialize things.

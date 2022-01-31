@@ -8,7 +8,7 @@ def interface (name, input):
     # from it determine which category the program has decided input belongs to,
     # then delete tempfile.  If anything goes wrong, return a failure.
     tempfile = 'RESULT'
-    cmd = './cbir3 %s *.png > %s' % (input, tempfile)
+    cmd = './colrec3 %s *.png > %s' % (input, tempfile)
     try:
         os.system (cmd)
         fd = open (tempfile, 'r')
